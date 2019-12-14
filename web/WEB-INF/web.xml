@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <servlet>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>controller.MainServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/shop/*</url-pattern>
+    </servlet-mapping>
+    <filter>
+        <filter-name>ActionFiler</filter-name>
+        <filter-class>controller.ActionFilter</filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>controller.EncodingFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>SecurityFilter</filter-name>
+        <filter-class>controller.SecurityFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/shop/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>ActionFiler</filter-name>
+        <url-pattern>/shop/*</url-pattern>
+    </filter-mapping>
+
+
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <url-pattern>/shop/*</url-pattern>
+    </filter-mapping>
+
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/jsp/error/error.jsp</location>
+    </error-page>
+</web-app>
